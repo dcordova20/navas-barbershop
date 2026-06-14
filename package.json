@@ -1,0 +1,11 @@
+{
+  "name": "navas-barbershop",
+  "version": "1.0.0",
+  "description": "Navas Barbershop website with built-in editor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,82 @@
+{
+  "site_title": "Navas Barbershop",
+  "tagline": "Classic cuts. Clean fades. Corona, CA.",
+  "hero": {
+    "headline": "Navas Barbershop",
+    "subhead": "Corona's trusted neighborhood barbershop. Walk-ins welcome, appointments available.",
+    "background_image": "",
+    "cta_text": "Book Now",
+    "cta_link": "tel:6575077000"
+  },
+  "about": {
+    "headline": "About Us",
+    "body": "Navas Barbershop delivers precision cuts, hot towel shaves, and a relaxed atmosphere at 1510 West 6th Street #103 in Corona, CA. Open Monday through Saturday 9am-6pm and Sundays 9am-2pm.",
+    "image": ""
+  },
+  "services": {
+    "headline": "Services",
+    "items": [
+      {
+        "name": "Classic Haircut",
+        "desc": "Precision scissor and clipper work.",
+        "price": "$30+"
+      },
+      {
+        "name": "Skin Fade",
+        "desc": "Seamless blend from skin to length.",
+        "price": "$35+"
+      },
+      {
+        "name": "Beard Trim & Shape-Up",
+        "desc": "Clean lines with hot towel finish.",
+        "price": "$20+"
+      },
+      {
+        "name": "Hot Towel Shave",
+        "desc": "Traditional straight razor shave.",
+        "price": "$40+"
+      }
+    ]
+  },
+  "testimonials": {
+    "headline": "Reviews",
+    "items": [
+      {
+        "quote": "Best barbershop in Corona. Period.",
+        "name": "Local Customer",
+        "rating": 5
+      },
+      {
+        "quote": "Clean shop, professional cuts, fair prices.",
+        "name": "Regular",
+        "rating": 5
+      }
+    ]
+  },
+  "gallery": {
+    "headline": "The Shop",
+    "images": []
+  },
+  "contact": {
+    "phone": "6575077000",
+    "address": "1510 West 6th Street #103, Corona, CA",
+    "hours": {
+      "Monday": "9:00 AM - 6:00 PM",
+      "Tuesday": "9:00 AM - 6:00 PM",
+      "Wednesday": "9:00 AM - 6:00 PM",
+      "Thursday": "9:00 AM - 6:00 PM",
+      "Friday": "9:00 AM - 6:00 PM",
+      "Saturday": "9:00 AM - 6:00 PM",
+      "Sunday": "9:00 AM - 2:00 PM"
+    },
+    "instagram": "@navasbarbershop"
+  },
+  "footer": {
+    "copyright": " Navas Barbershop. All rights reserved."
+  },
+  "placeholders": [
+    "hero.background_image",
+    "gallery.images",
+    "about.image"
+  ]
+}
