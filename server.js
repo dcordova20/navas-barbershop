@@ -82,23 +82,16 @@ function ensure() {
   }
   if (!fs.existsSync(SESSIONS_PATH)) fs.writeFileSync(SESSIONS_PATH, JSON.stringify({}, null, 2));
 
-  // Bootstrap default owner
-  try {
-    const auth = JSON.parse(fs.readFileSync(AUTH_PATH, "utf8"));
-    if (!auth.users || Object.keys(auth.users).length === 0) {
-      const pass = process.env.EDITOR_PASSWORD || "changeme-in-production";
-      const hash = crypto.createHash("sha256").update(pass).digest("hex");
-      const seeded = {
-        users: {
-          [process.env.EDITOR_EMAIL || "owner@local"]: { passwordHash: hash }
-        }
-      };
-      fs.writeFileSync(AUTH_PATH, JSON.stringify(seeded, null, 2));
-      console.log("Seeded default owner. Password:", pass);
-    }
-  } catch (e) {
-    // ignore
+  function tokenFallback() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
   }
+  globalThis.__makeToken = function () {
+    try {
+      return crypto.randomBytes(32).toString("hex");
+    } catch (e) {
+      return tokenFallback();
+    }
+  };
 }
 
 function readJson(p) {
@@ -227,7 +220,7 @@ const server = http.createServer((req, res) => {
         };
         writeJson(AUTH_PATH, auth);
         // auto-login
-        const token = crypto.randomBytes(32).toString("hex");
+        const token = globalThis.__makeToken ? globalThis.__makeToken() : Date.now().toString(36) + Math.random().toString(36).slice(2);
         const sessions = readJson(SESSIONS_PATH) || {};
         sessions[token] = { email, createdAt: Date.now() };
         writeJson(SESSIONS_PATH, sessions);
@@ -259,7 +252,7 @@ const server = http.createServer((req, res) => {
           sendJson(res, 401, { error: "Invalid credentials" });
           return;
         }
-        const token = crypto.randomBytes(32).toString("hex");
+        const token = globalThis.__makeToken ? globalThis.__makeToken() : Date.now().toString(36) + Math.random().toString(36).slice(2);
         const sessions = readJson(SESSIONS_PATH) || {};
         sessions[token] = { email, createdAt: Date.now() };
         writeJson(SESSIONS_PATH, sessions);
