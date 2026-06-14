@@ -26,6 +26,12 @@
     el.addEventListener("click", async (e) => {
       if (!window.__editMode) return;
       e.preventDefault();
+      try {
+        await ensureAuth();
+      } catch {
+        toast("Please log in to edit");
+        return;
+      }
       const path = el.getAttribute("data-field");
       if (!path) return;
       const cur = el.textContent;
@@ -41,6 +47,7 @@
           el.textContent = input.value;
           toast("Saved draft");
         } catch (err) {
+          el.textContent = input.value || cur;
           toast(err.message || "Save failed");
         }
       };
@@ -50,9 +57,8 @@
   }
 
   async function ensureAuth() {
-    try {
-      await api("/auth/me");
-    } catch {
+    const localUser = localStorage.getItem("navas_email");
+    if (!localUser) {
       return new Promise((resolve) => {
         const modal = document.getElementById("auth-modal");
         modal.classList.remove("hidden");
@@ -62,14 +68,18 @@
           if (!email || !password) return;
           try {
             await api("/auth/register", { method: "POST", body: { email, password } });
+            localStorage.setItem("navas_email", email);
             modal.classList.add("hidden");
+            resolve();
           } catch {
             try {
               await api("/auth/login", { method: "POST", body: { email, password } });
+              localStorage.setItem("navas_email", email);
               modal.classList.add("hidden");
+              resolve();
             } catch (e) {
               toast(e.message || "Auth failed");
-              return;
+              throw e;
             }
           }
         };
@@ -80,11 +90,22 @@
         document.getElementById("auth-close")?.addEventListener("click", () => modal.classList.add("hidden"));
       });
     }
-    return true;
+    // Verify the session is still good
+    try {
+      await api("/auth/me");
+    } catch (e) {
+      localStorage.removeItem("navas_email");
+      throw e;
+    }
   }
 
   async function publish() {
-    await ensureAuth();
+    try {
+      await ensureAuth();
+    } catch {
+      toast("Please log in to publish");
+      return;
+    }
     try {
       const content = await api("/content", { method: "GET" });
       await api("/publish", { method: "POST", body: content });
@@ -106,6 +127,7 @@
 
   async function logout() {
     await fetch(API + "/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
+    localStorage.removeItem("navas_email");
     toast("Logged out");
   }
 
