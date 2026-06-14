@@ -11,7 +11,7 @@
   <div class="container header-inner">
     <a class="brand" href="/">
       <span class="brand-mark">N</span>
-      <span class="brand-name">Navas Barbershop</span>
+      <span class="brand-name" data-field="site_title">Navas Barbershop</span>
     </a>
     <nav class="main-nav">
       <a href="#services">Services</a>
@@ -25,46 +25,46 @@
 <section class="hero" id="home">
   <div class="hero-overlay">
     <div class="container hero-copy">
-      <h1>Navas Barbershop</h1>
-      <p>Classic cuts. Clean fades. Corona's trusted neighborhood barbershop.</p>
-      <a class="btn btn-primary" href="tel:6575077000">657-507-7000</a>
+      <h1 data-field="hero.headline">Navas Barbershop</h1>
+      <p data-field="hero.subhead">Classic cuts. Clean fades. Corona's trusted neighborhood barbershop.</p>
+      <a class="btn btn-primary" data-field="hero.cta_text" href="tel:6575077000">Book Now</a>
     </div>
   </div>
 </section>
 
 <section class="about section" id="about">
   <div class="container">
-    <h2>About Us</h2>
+    <h2 data-field="about.headline">About Us</h2>
     <div class="about-body">
-      <p>Navas Barbershop delivers precision cuts, hot towel shaves, and a relaxed atmosphere at 1510 West 6th Street #103, Corona, CA. Open Monday through Saturday 9am-6pm and Sundays 9am-2pm. Walk-ins welcome.</p>
-      <div class="about-image"></div>
+      <p data-field="about.body">Navas Barbershop delivers precision cuts, hot towel shaves, and a relaxed atmosphere at 1510 West 6th Street #103, Corona, CA. Open Monday through Saturday 9am-6pm and Sundays 9am-2pm. Walk-ins welcome.</p>
+      <div class="about-image" data-field="about.image"></div>
     </div>
   </div>
 </section>
 
 <section class="services section" id="services">
   <div class="container">
-    <h2>Services</h2>
+    <h2 data-field="services.headline">Services</h2>
     <div class="services-grid">
       <article class="service-card">
-        <h3>Classic Haircut</h3>
-        <p>Precision scissor and clipper work with clean-up.</p>
-        <p class="price">$30+</p>
+        <h3 data-field="services.items.0.name">Classic Haircut</h3>
+        <p data-field="services.items.0.desc">Precision scissor and clipper work with clean-up.</p>
+        <p class="price" data-field="services.items.0.price">$30+</p>
       </article>
       <article class="service-card">
-        <h3>Skin Fade</h3>
-        <p>Seamless blend from skin to length. Hot towel finish included.</p>
-        <p class="price">$35+</p>
+        <h3 data-field="services.items.1.name">Skin Fade</h3>
+        <p data-field="services.items.1.desc">Seamless blend from skin to length. Hot towel finish included.</p>
+        <p class="price" data-field="services.items.1.price">$35+</p>
       </article>
       <article class="service-card">
-        <h3>Beard Trim & Shape-Up</h3>
-        <p>Clean lines, sharp edges, straight razor detail.</p>
-        <p class="price">$20+</p>
+        <h3 data-field="services.items.2.name">Beard Trim & Shape-Up</h3>
+        <p data-field="services.items.2.desc">Clean lines, sharp edges, straight razor detail.</p>
+        <p class="price" data-field="services.items.2.price">$20+</p>
       </article>
       <article class="service-card">
-        <h3>Hot Towel Shave</h3>
-        <p>Traditional straight razor shave with hot towels and aftershave.</p>
-        <p class="price">$40+</p>
+        <h3 data-field="services.items.3.name">Hot Towel Shave</h3>
+        <p data-field="services.items.3.desc">Traditional straight razor shave with hot towels and aftershave.</p>
+        <p class="price" data-field="services.items.3.price">$40+</p>
       </article>
     </div>
   </div>
@@ -72,15 +72,21 @@
 
 <section class="reviews section" id="reviews">
   <div class="container">
-    <h2>Reviews</h2>
+    <h2 data-field="testimonials.headline">Reviews</h2>
     <div class="reviews-grid">
       <blockquote class="review-card">
-        <p>Best barbershop in Corona. Period. Clean cuts, clean shop, and the guys know what they're doing.</p>
-        <cite>Local Customer <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></cite>
+        <p data-field="testimonials.items.0.quote">Best barbershop in Corona. Period. Clean cuts, clean shop, and the guys know what they're doing.</p>
+        <cite>
+          <span data-field="testimonials.items.0.name">Local Customer</span>
+          <span class="stars" data-field="testimonials.items.0.rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </cite>
       </blockquote>
       <blockquote class="review-card">
-        <p>Walked in without an appointment on a Saturday and they got me right in. Fair prices, no attitude. My new spot.</p>
-        <cite>Regular <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></cite>
+        <p data-field="testimonials.items.1.quote">Walked in without an appointment on a Saturday and they got me right in. Fair prices, no attitude. My new spot.</p>
+        <cite>
+          <span data-field="testimonials.items.1.name">Regular</span>
+          <span class="stars" data-field="testimonials.items.1.rating">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        </cite>
       </blockquote>
     </div>
   </div>
@@ -88,14 +94,9 @@
 
 <section class="gallery section" id="gallery">
   <div class="container">
-    <h2>The Shop</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"></div>
-      <div class="gallery-item"></div>
-      <div class="gallery-item"></div>
-      <div class="gallery-item"></div>
-    </div>
-    <p style="color:var(--muted);font-size:0.9rem;">Photos coming soon.</p>
+    <h2 data-field="gallery.headline">The Shop</h2>
+    <div class="gallery-grid" id="gallery-grid"></div>
+    <p style="color:var(--muted);font-size:0.9rem;">Tap Edit to add photos.</p>
   </div>
 </section>
 
@@ -104,12 +105,12 @@
     <h2>Visit Us</h2>
     <div class="contact-grid">
       <div>
-        <p><strong>Address</strong><br>1510 West 6th Street #103<br>Corona, CA</p>
-        <p><strong>Phone</strong><br><a href="tel:6575077000">657-507-7000</a></p>
-        <p><strong>Instagram</strong><br><a href="#">@navasbarbershop</a></p>
+        <p><strong>Address</strong><br><span data-field="contact.address">1510 West 6th Street #103, Corona, CA</span></p>
+        <p><strong>Phone</strong><br><a data-field="contact.phone" href="tel:6575077000">657-507-7000</a></p>
+        <p><strong>Instagram</strong><br><a data-field="contact.instagram" href="#">@navasbarbershop</a></p>
       </div>
       <div>
-        <h3>Hours</h3>
+        <h3 data-field="contact.hours_label">Hours</h3>
         <div id="hours-list"></div>
       </div>
     </div>
@@ -119,7 +120,7 @@
 
 <footer class="site-footer">
   <div class="container">
-    <p>&copy; Navas Barbershop. All rights reserved.</p>
+    <p data-field="footer.copyright">&copy; Navas Barbershop. All rights reserved.</p>
   </div>
 </footer>
 
